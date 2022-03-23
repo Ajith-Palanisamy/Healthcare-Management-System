@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/0df0fc7e74.js"></script>
+    <link rel="stylesheet" href="/css/patient/dashboard.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <h3><%=user.name%></h3>
+            <ul>
+                <li><a href="/patient/dashboard?id=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-bars"></i>Dashboard</a></li>
+                <li><a href="/patient/makeAppointment?userid=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-clipboard"></i>Make Appointment</a></li>
+                <li><a href="/patient/viewAppointments?userid=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-notes-medical"></i>View Appointments</a></li>
+                <li><a href="/patient/editprofile?userid=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-user"></i>Edit Profile</a></li>
+                <li><a href="/patient/changePassword?userid=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-key"></i>Change Password</a></li>
+                <li><a href="/"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
+            </ul> 
+        </div>
+        <div class="main_content">
+            <div class="header">HEALTHCARE MANAGEMENT SYSTEM</div>  
+            <div class="info">
+              <div>
+                <img id="main" alt="image">
+              </div>
+              <div id="quote">
+                HEALTH IS THE GREATEST OF HUMAN BLESSINGS
+            </div>
+          
+            </div>
+        </div>
+    </div>
+    
+    </body>
+    <script src="/js/patient/dashboard.js">
+    </script>
+</html>

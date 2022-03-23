@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/doctor/editProfile.css">
+    <script src="https://kit.fontawesome.com/0df0fc7e74.js"></script>
+    
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <h3>Dr.<%=user.name%></h3>
+            <ul>
+                <li><a href="/doctor/dashboard?id=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-bars"></i>Dashboard</a></li>
+                <li><a href="/doctor/viewAppointments?userid=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-notes-medical"></i>View Appointments</a></li>
+                <li><a href="/doctor/Editprofile?userid=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-user"></i>Edit Profile</a></li>
+                <li><a href="/doctor/changePassword?userid=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-key"></i>Change Password</a></li>
+                <li><a href="/"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
+            </ul> 
+        </div>
+        <div class="main_content">
+            <div class="header">HEALTHCARE MANAGEMENT SYSTEM</div>  
+            <div class="info">
+              <div>
+                <p id="p1">Edit Profile</p>
+                <form action='editProfile2?id=<%=user._id%>&token=<%=token%>' id="form1" method="post"  onsubmit="return validate()">
+                    <label for="specialization">Specialization</label><br>
+                    <select name="spc" id="spc">
+                        <option value="<%=user.spc%>" selected><%=user.spc %></option>
+                    </select><br>
+                    <label for="name">Doctor Name</label><br>
+                    <input type="text" name="name" id="name" placeholder="Enter Doctor Name" value="<%=user.name%>"><br>
+                    <p id="nameErr" class="err"></p>
+                    <label for="fee">Consultancy Fee</label><br>
+                    <input type="number" name="fee" id="fee" placeholder="Enter Doctor Consultancy Fees" value="<%=user.fee%>" ><br>
+                    <p id="feeErr" class="err"></p>
+                    <label for="contact">Doctor Contact Number</label><br>
+                    <input type="text" name="contact" id="contact" placeholder="Enter Doctor Contact Number" value="<%=user.contact%>"><br>
+                    <p id="contactErr" class="err"></p>
+                    <label for="email">Email</label><br>
+                    <input type="text" name="email" id="email" placeholder="Enter Email" value="<%=user.email%>" readonly><br>
+                    <p id="p2"><a href="/doctor/dashboard?id=<%=user._id%>&token=<%=token%>">back</a><button type="submit">Update <i class="fa fa-arrow-circle-right"></i></button></p>
+                </form>
+              </div>
+
+          
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    if("<%=msg%>")
+    {
+        alert("<%=msg%>");
+    }
+</script>
+<script src="/js/doctor/editProfile.js"></script>
+</html>

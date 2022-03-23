@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/0df0fc7e74.js"></script>
+    <link rel="stylesheet" href="/css/patient/makeAppointment.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <h3><%=user.name%></h3>
+            <ul>
+                <li><a href="/patient/dashboard?id=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-bars"></i>Dashboard</a></li>
+                <li><a href="/patient/makeAppointment?userid=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-clipboard"></i>Make Appointment</a></li>
+                <li><a href="/patient/viewAppointments?userid=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-notes-medical"></i>View Appointments</a></li>
+                <li><a href="/patient/editprofile?userid=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-user"></i>Edit Profile</a></li>
+                <li><a href="/patient/changePassword?userid=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-key"></i>Change Password</a></li>
+                <li><a href="/"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
+            </ul> 
+        </div>
+        <div class="main_content">
+            <div class="header">HEALTHCARE MANAGEMENT SYSTEM</div>  
+            <div class="info">
+                <div>
+                    <p id="p1">Make Appointment</p>
+                    <!-- <p>User:<%=user.name%></p> -->
+                    <form action="addAppointment?id=<%=user._id%>&token=<%=token%>" id="form1" method="post" onsubmit="return validate()">
+                        <label for="spc">Specializations</label><br>
+                        <select id="spc" name="spc" onchange="fn()">
+                            <option value="select">select</option>
+                        <%
+                                if(spec.length!=0){
+                                    for(var i=0;i<spec.length;i++){
+                        %>
+                        <option value="<%=spec[i].spc %>"><%=spec[i].spc %></option>
+                        <%
+                                }   
+                            }    
+                        %>
+                        </select><br>
+                        <p id="spcErr" class="err"></p>
+                        <label for="dname">Doctors</label><br>
+                        <input list="doctors" name="dname" id="dname">
+                        <datalist id="doctors">
+                            <option value="select">
+                                <%
+                                if(doc.length!=0){
+                                    for(var i=0;i<doc.length;i++){
+                        %>
+                        <option value="<%=doc[i].name %>"><%=doc[i].spc %></option>
+                        <%
+                                }   
+                            }    
+                        %>
+                        </datalist>
+                        <br>
+                        <p id="docErr" class="err"></p>
+                        <label for="date">Date</label><br>
+                        <input type="date" name="date" id="date" min="<%=today%>" value="<%=today%>"><br>
+                        <p id="dateErr" class="err"></p>
+                        <p id="p2"><a href="/patient/dashboard?id=<%=user._id%>&token=<%=token%>">back</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="submit" value="Submit"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var str="<%=msg%>";
+    if(str)
+    {
+        alert("<%=msg%>\nToken No:<%=t1%>\nConsultancy Fees:<%=t2%>");
+    }
+    var h="<%=hour%>";
+     h=parseInt(h);
+        if(h>15)
+        {
+            var date=new Date();
+            date.setDate(date.getDate()+1);
+            var day=date.getDate();
+        var m=date.getMonth()+1;
+        var y=date.getFullYear();
+        var hour=date.getHours();
+        if(m<10)m="0"+m;
+        if(day<10)day="0"+day;
+        var today=y+"-"+m+"-"+day; 
+
+         document.getElementById("date").min=today;
+         document.getElementById("date").value=today;
+        }
+</script>
+<script src="/js/patient/makeAppointment.js"></script>
+</html>

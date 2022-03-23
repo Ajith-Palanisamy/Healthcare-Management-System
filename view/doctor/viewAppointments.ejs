@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/0df0fc7e74.js"></script>
+    <link rel="stylesheet" href="/css/doctor/viewAppointment.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <h3>Dr.<%=user.name%></h3>
+            <ul>
+                <li><a href="/doctor/dashboard?id=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-bars"></i>Dashboard</a></li>
+                <li><a href="/doctor/viewAppointments?userid=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-notes-medical"></i>View Appointments</a></li>
+                <li><a href="/doctor/Editprofile?userid=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-user"></i>Edit Profile</a></li>
+                <li><a href="/doctor/changePassword?userid=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-key"></i>Change Password</a></li>
+                <li><a href="/"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
+            </ul> 
+        </div>
+        <div class="main_content">
+            <div class="header">HEALTHCARE MANAGEMENT SYSTEM</div>  
+            <div class="info">
+              <div>
+                <p id="p1">Your Appointments</p>
+                <p class="p2">Upcoming Appointments</p>
+                <table border="1" width="90%">
+                    <tr><th>#</th><th>Appointment Date</th><th>Token No</th><th>Patient Name</th><th>Appointment Creation</th><th>Action</th></tr>
+                    <%
+                    if(t1.length!=0){
+                        for(var i=0;i<t1.length;i++){   
+                        
+                            var d=t1[i].date.getDate();
+                            var m=t1[i].date.getMonth()+1;
+                            var y=t1[i].date.getFullYear();
+                            if(m<10)m="0"+m;
+                            if(d<10)d="0"+d;
+                            var dt=d+"-"+m+"-"+y; 
+            
+                            var d1=t1[i].creation.getDate();
+                            var m1=t1[i].creation.getMonth()+1;
+                            var y1=t1[i].creation.getFullYear();
+                            if(m1<10)m1="0"+m1;
+                            if(d1<10)d1="0"+d1;
+                            var dt1=d1+"-"+m1+"-"+y1; 
+            
+                            var tm=t1[i].creation.toLocaleTimeString('en-US');
+                    %>
+                    <tr>
+                        <td><%=i+1%></td>
+                        <td><%=dt%></td>
+                        <td><%=t1[i].tokenNo%></td>
+                        <td><%=t1[i].pname%></td>
+                        <td><%=dt1%> <%=tm%></td>
+                        <td><a href="/doctor/deleteAppointment?id=<%=t1[i]._id%>&userid=<%=user._id%>&token=<%=token%>" onclick="return confirm(`Are you sure you want to delete the appointment with patient <%=t1[i].pname%> on <%=dt%>`)">Delete</a></td>
+                    </tr>
+                    <%
+                            }
+                        }
+                        else{
+                    %>
+                    <tr><td colspan="7">No Appointments</td></tr>
+                    <%
+                        }
+                    %>
+                </table>
+                <br><a id="back" href="/doctor/dashboard?id=<%=user._id%>&token=<%=token%>">back</a><br><br>
+                <p class="p2">Appointment History</p>
+                <table border="1" width="90%">
+                    <tr><th>#</th><th>Appointment Date</th><th>Token No</th><th>Patient Name</th><th>Appointment Creation</th><th>Action</th></tr>
+                    <%
+                    if(t2.length!=0){
+                        for(var i=0;i<t2.length;i++){  
+                            var d=t2[i].date.getDate();
+                    var m=t2[i].date.getMonth()+1;
+                    var y=t2[i].date.getFullYear();
+                    if(m<10)m="0"+m;
+                    if(d<10)d="0"+d;
+                    var dt=d+"-"+m+"-"+y;  
+            
+                    var d1=t2[i].creation.getDate();
+                    var m1=t2[i].creation.getMonth()+1;
+                    var y1=t2[i].creation.getFullYear();
+                    if(m1<10)m1="0"+m1;
+                    if(d1<10)d1="0"+d1;
+                    var dt1=d1+"-"+m1+"-"+y1; 
+            
+                    var tm=t2[i].creation.toLocaleTimeString('en-US');
+                    %>
+                    <tr>
+                        <td><%=i+1%></td>
+                        <td><%=dt%></td>
+                        <td><%=t2[i].tokenNo%></td>
+                        <td><%=t2[i].pname%></td>
+                        <td><%=dt1%> <%=tm%></td>
+                        <td><a href="/doctor/deleteAppointment?id=<%=t2[i]._id%>&userid=<%=user._id%>&token=<%=token%>" onclick="return confirm(`Are you sure you want to delete the appointment`)">Delete</a></td>
+                    </tr>
+                    <%
+                            }
+                        }
+                        else{
+                    %>
+                    <tr><td colspan="7">No Appointments</td></tr>
+                    <%
+                        }
+                    %>
+                </table>
+              </div>
+            </div>
+        </div>
+    </div> 
+</body>
+</html>

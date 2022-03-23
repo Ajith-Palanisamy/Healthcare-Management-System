@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/patient/patient_register.css">
+</head>
+
+<body>
+    <div>
+        <p id="p1">Patient Registration</p>
+        <form action="registerValidate"  method="post" onsubmit="return validate()">
+            <fieldset><legend>Sign Up</legend>
+                <p class="p2">Enter your personal details below:</p>
+                <p class="p3"><input type="text" name="name" placeholder="Full Name" value="<%=obj.name%>" id="name"></p>
+                <p id="nameErr" class="err"></p>
+                <p class="p3"><input type="text" name="city" placeholder="City" value="<%=obj.city%>" id="city"></p>
+                <p id="cityErr" class="err"></p>
+                <p class="p3"><input type="text" name="contact" placeholder="Contact Number" value="<%=obj.contact%>" id="contact"></p>
+                <p id="contactErr" class="err"></p>
+                <p class="p3"><input type="number" name="age" placeholder="Age" value="<%=obj.age%>" id="age"></p>
+                <p id="ageErr" class="err"></p>
+                <p class="p2">Gender</p>
+                <p class="p2"><input type="radio" name="gender" value="male" id="male">Male
+                    <input type="radio" name="gender" value="female" id="female">Female
+                    <input type="radio" name="gender" value="others" id="others">Others</p>
+                <p id="genderErr" class="err"></p>
+                <p class="p2">Enter your account details below:</p>
+                <p class="p3"><i class="fa fa-user icon"></i><input type="text" name="email" placeholder="Username" value="<%=obj.email%>" id="email"></p>
+                <p id="emailErr" class="err"></p>               
+                <p class="p3"><i class="fa fa-lock icon"></i><input type="password" name="pwd" placeholder="Password" value="<%=obj.pwd%>" id="pwd"></p>
+                <p id="pwdErr" class="err"></p>
+                <p class="p3"><i class="fa fa-lock icon"></i><input type="password" name="cpwd" placeholder="Password Again"  value="<%=obj.pwd%>" id="cpwd"></p>
+                <p id="cpwdErr" class="err"></p>
+                <p><button type="submit">Register<i class="fa fa-arrow-circle-right"></i></button></p>
+                <p class="p2">Already have an account ? <a href="/patient/patient_login">Log-in</a></p>
+            </fieldset>
+        </form>
+    </div>
+    
+</body>
+<script>
+    if("<%=msg%>")
+    {
+        document.getElementById("emailErr").innerHTML="User with this Email is already Exist";
+        document.getElementById("email").focus();
+    }
+    if("<%=obj.gender%>"=="male")
+    {
+        document.getElementById("male").checked=true;
+    }
+    else if("<%=obj.gender%>"=="female")
+    {
+        
+        document.getElementById("female").checked=true;
+    }
+    else if("<%=obj.gender%>"=="others")
+    {
+        document.getElementById("others").checked=true;
+    }
+</script>
+<script src="/js/patient/register.js"></script>
+</html>

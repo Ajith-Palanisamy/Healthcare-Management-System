@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/0df0fc7e74.js"></script>
+    <link rel="stylesheet" href="/css/admin/viewDoctors.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <h3>Admin</h3>
+            <ul>
+                <li><a href="/admin/loginSuccess?token=<%=token%>"><i class="fa-solid fa-bars"></i>Dashboard</a></li>
+                <li><a href="/admin/addSpecialization?token=<%=token%>"><i class="fa-solid fa-staff-aesculapius"></i>Specializations</a></li>
+                <li><a href="/admin/addDoctor?token=<%=token%>"><i class="fa-solid fa-user-doctor"></i>Add Doctor</a></li>
+                <li><a href="/admin/viewDoctors?token=<%=token%>"><i class="fa-solid fa-hand-holding-medical"></i>View Doctors</a></li>
+                <li><a href="/admin/viewPatients?token=<%=token%>"><i class="fa-solid fa-hospital-user"></i>View Patients</a></li>
+                <li> <a href="/admin/viewAppointments?token=<%=token%>"><i class="fa-solid fa-notes-medical"></i>View Appointments</a></li>
+                <li><a href="/admin/changePassword?token=<%=token%>"><i class="fa-solid fa-key"></i>Change Password</a></li>
+                <li><a href="/"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
+                
+            </ul> 
+        </div>
+        <div class="main_content">
+            <div class="header">HEALTHCARE MANAGEMENT SYSTEM</div>  
+            <div class="info">
+              <div>
+                <p id="p1">Doctors</p>
+                <table border="1" width="90%">
+                    <tr><th>#</th><th>Specialization</th><th>Doctor Name</th><th>Email</th><th colspan="2">Action</th></tr>
+                    <%
+                            if(result.length!=0){
+                                for(var i=0;i<result.length;i++){
+                    %>
+                    <tr>
+                        <td><%=i+1%></td>
+                        <td><%=result[i].spc %></td>
+                        <td><%=result[i].name %></td>
+                        <td><%=result[i].email %></td>
+                        
+                        <td>&nbsp&nbsp<a href="/admin/updateDoctor?id=<%=result[i]._id %>&token=<%=token%>"+>Update</a>&nbsp&nbsp&nbsp&nbsp<a href="/admin/removeDoctor?id=<%=result[i]._id %>&token=<%=token%>" onclick="return confirm(`Are you sure you want to delete Dr.<%=result[i].name%> `)">Delete</a></td>
+                    </tr>
+                    <%
+                            }   
+                        }    
+                    %>
+        
+                </table>
+                <br><a id="back" href="/admin/loginSuccess?token=<%=token%>">back</a>
+
+              </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

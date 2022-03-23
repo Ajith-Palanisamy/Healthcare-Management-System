@@ -1,0 +1,32 @@
+const mongoose=require('mongoose');
+const doctorSchema=new mongoose.Schema({
+    spc:{
+        type:String,
+        required:true
+    },
+    name:{
+        type:String,
+        required:true,
+    },
+    fee:{
+        type:Number,
+        default:100,
+        required:true
+    },
+    contact:{
+        type:String,
+        required:true,
+        minlength:10,
+        maxlength:10
+    },
+    email:{
+        type:String,
+        required:true,
+        unique:true
+    },
+    pwd:{
+        type:String,
+        required:true
+    }
+});
+module.exports=mongoose.model('doctor',doctorSchema);

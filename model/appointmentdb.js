@@ -1,0 +1,41 @@
+const mongoose=require('mongoose');
+const appointmentSchema=new mongoose.Schema({
+    pname:{
+        type:String,
+        required:true
+    },
+    p_id:{
+        type:String,
+        required:true
+    },
+    dname:{
+        type:String,
+        required:true
+    },
+    d_id:{
+        type:String,
+        required:true
+    },
+    spc:{
+        type:String,
+        required:true
+    },
+    fee:{
+        type:Number,
+        default:100,
+        required:true
+    },
+    date:{
+        type:Date,
+        required:true
+    },
+    creation:{
+        type:Date,
+        default:Date.now
+    },
+    tokenNo:{
+        type:Number,
+        default:1
+    }
+});
+module.exports=mongoose.model('appointment',appointmentSchema);

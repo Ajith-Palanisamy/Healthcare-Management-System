@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+    <div class="header">
+    <h1>Healthcare Management System</h1>
+    </div>
+    <div class="main">
+        <img src="/images/index_image.jpg" alt="image">
+    </div>
+    <div class="footer">
+        <div class="footer1">
+        <span class="login">
+            <a href="/patient/patient_login"><img src="/images/grid-img3.png"></a>
+            <a href="/patient/patient_login" id="log"><h1>Patient Login</h1></a>
+        </span>
+        <span class="login">
+            <a href="/doctor/doctor_login"><img src="/images/grid-img1.png"></a>
+            <a href="/doctor/doctor_login"><h1>Doctor Login</h1></a>
+        </span>
+        <span class="login">
+            <a href="/admin/admin_login"><img src="/images/grid-img2.png"></a>
+            <a href="/admin/admin_login"><h1>Admin Login</h1></a>
+        </span>
+    </div>
+    </div>
+</body>
+<script>
+    if("<%=msg%>")
+    alert("<%=msg%>");
+</script>
+</html>

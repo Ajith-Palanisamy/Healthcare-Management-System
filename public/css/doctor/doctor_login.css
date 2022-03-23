@@ -1,0 +1,76 @@
+html {
+    height:100%;
+}
+#p1 
+{
+    font-size: 30px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    margin: 20px 0px;
+    color:white;
+}
+body {
+    background-image:url("/images/login1.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+fieldset {
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+input[type="text"],input[type="password"]
+{
+    border:none;
+    width:90%;
+    padding:8px;
+}
+button{
+    background-color: #3391E7;
+    border:1px solid #3391E7;
+    border-radius: 3px;
+    color:white;
+    padding:5px 8px;
+    float:right;
+
+}  
+form {
+    border:1px solid white;
+    border-radius: 5px;
+    width:450px;
+    background-color: white;
+    padding:15px;
+    padding-bottom: 20px;
+} 
+legend {
+    color:#3391E7;
+    font-size: 20px;
+} 
+div {
+    width:500px;
+    margin:auto;
+    margin-top: 7%;
+}
+#p2 {
+    color:gray;
+}
+ i {
+     color:#3391E7;
+     margin:0px 5px;
+ }
+ button i{
+     color:white;
+ }
+ .p3 {
+    border: 1px dotted gray;
+ }
+ input[type='text']
+ {
+     width:370px;
+     
+ }
+ .err
+ {
+     color:tomato;
+     font-family: Georgia, 'Times New Roman', Times, serif;
+     font-size: small;
+ }

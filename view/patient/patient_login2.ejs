@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/patient/patient_login.css">
+</head>
+<body>
+    <div>
+        <p id="p1">Healthcare Management System</p>
+        <form action="/patient/login" method="post">
+            <fieldset><legend>Registration Successfull</legend>
+                <p class="p2">Please check your registered email to activate your account.</p>
+                <p class="p2">Email :<span id="sp1"> <%=obj.email%></span></p>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

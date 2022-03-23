@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/doctor/doctor_login.css">
+</head>
+<body>
+    <div>
+        <p id="p1">Doctor Login</p>
+        <form action="/doctor/login" method="post" onsubmit="return validate()">
+            <fieldset><legend>Sign in to your account</legend>
+                <p id="p2">Please enter your name and password to log in.</p>
+                <p class="p3"><i class="fa fa-user icon"></i><input type="text" name="email" placeholder="Username" size="100" id="email"></p>
+                <p id="emailErr" class="err"> <%=emailErr %> </p>
+                <p class="p3"><i class="fa fa-lock icon"></i><input type="password" name="pwd" placeholder="Password" id="pwd"></p>
+                <p id="pwdErr" class="err"> <%=pwdErr %> </p>
+                <p><button type="submit">Login<i class="fa fa-arrow-circle-right"></i></button></p>
+            </fieldset>
+        </form>
+    </div>
+    
+</body>
+<script>
+    if("<%=email%>"!="")
+    {
+        document.getElementById("email").focus();
+       document.getElementById("email").value="<%=email%>";
+       document.getElementById("pwd").value="<%=pwd%>";
+    }
+    if("<%=pwdErr%>"!="")
+    {
+        document.getElementById("pwd").focus();
+        document.getElementById("email").value="<%=email%>";
+        document.getElementById("pwd").value="<%=pwd%>";
+       
+    }
+</script>
+<script src="/js/doctor/login.js"></script>
+</html>

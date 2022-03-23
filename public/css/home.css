@@ -1,0 +1,31 @@
+h1 {
+    color:#3391E7;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.main img {
+    width:100%;
+}
+.footer {
+    width:100%;
+    background-color:#3391E7;
+}
+.footer1 {
+    width:1010px;
+    margin: auto;
+}
+.login {
+    display:inline-block;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 20px;
+    margin:5px;
+    width:300px;
+    padding:10px;
+}
+.login img {
+    float:left;
+}
+.login a{
+    text-decoration: none;
+    text-align: center;
+}

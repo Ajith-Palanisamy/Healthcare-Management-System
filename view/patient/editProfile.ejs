@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/patient/editProfile.css">
+    <script src="https://kit.fontawesome.com/0df0fc7e74.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <h3><%=user.name%></h3>
+            <ul>
+                <li><a href="/patient/dashboard?id=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-bars"></i>Dashboard</a></li>
+                <li><a href="/patient/makeAppointment?userid=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-clipboard"></i>Make Appointment</a></li>
+                <li><a href="/patient/viewAppointments?userid=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-notes-medical"></i>View Appointments</a></li>
+                <li><a href="/patient/editprofile?userid=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-user"></i>Edit Profile</a></li>
+                <li><a href="/patient/changePassword?userid=<%=user._id%>&token=<%=token%>"><i class="fa-solid fa-key"></i>Change Password</a></li>
+                <li><a href="/"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
+            </ul> 
+        </div>
+        <div class="main_content">
+            <div class="header">HEALTHCARE MANAGEMENT SYSTEM</div>  
+            <div class="info">
+              <div>
+                <p id="p1">Edit Profile</p>
+                <form action="editProfile2?id=<%=user._id%>&token=<%=token%>" id="form1" onsubmit="return validate()" method="post">
+                        <label>Full Name:</label>
+                        <p class="p3"><input type="text" name="name" placeholder="Full Name" id="name" value="<%=user.name%>"></p>
+                        <p id="nameErr" class="err"></p>
+                        <label>City:</label>
+                        <p class="p3"><input type="text" name="city" placeholder="City" id="city" value="<%=user.city%>"></p>
+                        <p id="cityErr" class="err"></p>
+                        <label>Contact Number:</label>
+                        <p class="p3"><input type="text" name="contact" placeholder="Contact Number" id="contact" value="<%=user.contact%>"></p>
+                        <p id="contactErr" class="err"></p>
+                        <label>Age:</label>
+                        <p class="p3"><input type="number" name="age" placeholder="Age" id="age" value="<%=user.age%>"></p>
+                        <p id="ageErr" class="err"></p>
+                        <label>Gender:</label>
+                        <p id="genselect"><input type="radio" name="gender" value="male" id="male"> Male
+                            <input type="radio" name="gender" value="female" id="female"> Female
+                            <input type="radio" name="gender" value="others" id="others"> Others</p>
+                            <p id="genderErr" class="err"></p>
+                        <!-- <label>Email</label> -->
+                        <p class="p3"></i><input type="hidden" name="email" placeholder="Username" id="email" value="<%=user.email%>" readonly></p>
+                        <p id="p2"><a href="/patient/dashboard?id=<%=user._id%>&token=<%=token%>">back</a><button type="submit">Update <i class="fa fa-arrow-circle-right"></i></button></p>
+
+                </form>
+              </div>
+                    
+          
+            </div>
+        </div>
+    </div>
+    
+</body>
+<script>
+    var str="<%=msg%>";
+    var gender="<%=user.gender%>";
+     if(str)
+    {
+        alert(str);
+    }
+    if(gender=="male")
+    {
+        document.getElementById("male").checked=true;
+    }
+    else if(gender=="female")
+    {
+        
+        document.getElementById("female").checked=true;
+    }
+    else if("gender"=="others")
+    {
+        document.getElementById("others").checked=true;
+    } 
+</script>
+<script src="/js/patient/editProfile.js"></script>
+</html>
